@@ -1,0 +1,198 @@
+---
+import "@/base.css";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import Shell from "@/components/Shell.astro";
+import WalkCard from "@/components/WalkCard.astro";
+import InfoCard, {
+  type Props as InfoCardProps,
+} from "@/components/InfoCard.astro";
+import Button from "@/components/Button.astro";
+import FilterChip from "@/components/FilterChip.astro";
+
+const visitorInformation: InfoCardProps[] = [
+  {
+    title: "Getting there",
+    icon: "material-symbols:directions-rounded",
+    content: [
+      {
+        type: "paragraph",
+        content:
+          "Many walks including the Three Sisters Walk and the Wentworth Falls Track are accessible via public transport. Travelling by car is also an option for all walks. For more information, check the 'Getting there' section for each walk.",
+      },
+    ],
+  },
+  {
+    title: "Difficulty",
+    icon: "material-symbols:hiking-rounded",
+    content: [
+      {
+        type: "paragraph",
+        content:
+          "Walks are graded in terms of difficulty from easy, moderate to hard. Each level indicates the trail’s length, terrain, and the experience needed to ensure a safe and enjoyable hike. For more information, check the 'Difficulty' section for each walk.",
+      },
+    ],
+  },
+  {
+    title: "Facilities",
+    icon: "material-symbols:family-restroom-rounded",
+    content: [
+      {
+        type: "paragraph",
+        content:
+          "There are not rubbish bins in the area, please take all your rubbish with you. For more information about other facilities such as toilets, picnic areas and water, check the 'Facilities' section for each walk.",
+      },
+    ],
+  },
+  {
+    title: "Accessibility",
+    icon: "material-symbols:accessible-rounded",
+    content: [
+      {
+        type: "paragraph",
+        content:
+          "Some walks are wheelchair-friendly including the Three Sisters Walk. For more information, check the 'Accessibility' section for each walk.",
+      },
+    ],
+  },
+];
+
+const _walks = await getCollection("walks");
+---
+
+<Shell title="Blue Mountains Hikes">
+  <!-- hero section -->
+  <header
+    x-data
+    x-intersect:leave.margin.-80px.0.0.0="$store.navigation.isTransparent = false"
+    x-intersect:enter.margin.-80px.0.0.0="$store.navigation.isTransparent = true"
+    class="h-screen bg-[url('/images/hero-background.jpg')] bg-fixed bg-cover flex flex-col justify-end"
+  >
+    <div
+      class="content pb-8 lg:pb-16 flex flex-col gap-y-4 justify-start items-start lg:flex-row lg:gap-0 lg:justify-between lg:items-end"
+    >
+      <div class="space-y-4">
+        <h1 class="text-white text-4xl md:text-6xl font-medium max-w-[18ch]">
+          Uncover the Beauty of the Blue Mountains
+        </h1>
+        <h2 class="text-white text-xl">
+          Your Guide to Scenic Trails, Epic Views, and Outdoor Adventures
+        </h2>
+      </div>
+      <div class="flex items-center gap-x-4 updown">
+        <span class="uppercase text-white">Scroll</span>
+        <div
+          class="rounded-full border border-white w-7 h-7 flex items-center justify-center"
+        >
+          <Icon
+            name="heroicons:arrow-down-20-solid"
+            class="text-white"
+            size="20"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="space-y-24 py-24">
+    <!-- sub-hero section -->
+    <section class="content space-y-4">
+      <h1
+        class="text-3xl text-primary-950 text-left md:text-center scroll-mt-section"
+        id="adventure-awaits"
+      >
+        Adventure Awaits on Every Walk
+      </h1>
+      <p
+        class="text-xl text-gray-950 text-left md:text-center max-w-[64ch] mx-auto"
+      >
+        Explore the Blue Mountains{"'"} stunning trails, where every hike reveals
+        breathtaking views and hidden natural wonders. From scenic lookouts to cascading
+        waterfalls, your next adventure starts here.
+      </p>
+    </section>
+
+    <!-- popular walks section -->
+    <section
+      class="content space-y-8"
+      x-data=`{ filters: [], walks: ${JSON.stringify(_walks)} }`
+    >
+      <div
+        class="flex flex-col space-y-4 md:flex-row md:justify-between md:items-center"
+      >
+        <h1
+          class="text-3xl text-primary-950 scroll-mt-section"
+          id="popular-bushwalks"
+        >
+          Popular Bushwalks
+        </h1>
+        <template x-if="filters.length === 0">
+          <div class="flex flex-wrap gap-2">
+            <Button
+              x-data
+              x-on:click="filters.push({ id: 'family-friendly', label: 'Family friendly' })"
+            >
+              Family friendly
+            </Button>
+            <Button
+              x-data
+              x-on:click="filters.push({ id: 'accessible', label: 'Accessible' })"
+            >
+              Accessible
+            </Button>
+            <Button
+              x-data
+              x-on:click="filters.push({ id: 'long-walk', label: 'Long walk' })"
+            >
+              Long Walk
+            </Button>
+          </div>
+        </template>
+        <template x-if="filters.length > 0">
+          <template x-for="filter in filters">
+            <FilterChip
+              x-on:click="filters = filters.filter(appliedFilters => appliedFilters.id !== filter.id)"
+              ><span x-text="filter.label"></span></FilterChip
+            >
+          </template>
+        </template>
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:four-cards-layout gap-4"
+      >
+        <template x-for="walk in walks">
+          <template
+            x-if="filters.every(filter => walk.data.tags.includes(filter.id))"
+          >
+            <WalkCard
+              x-alpine
+              href="`/walks/${walk.id}`"
+              title="walk.data.title"
+              description="walk.data.cardDescription"
+              image="walk.data.image"
+              imageAlt="walk.data.imageAlt"
+              duration="walk.data.duration"
+              difficulty="walk.data.difficulty"
+            />
+          </template>
+        </template>
+      </div>
+    </section>
+
+    <!-- visitor information section -->
+    <section class="content space-y-8">
+      <h1
+        class="text-3xl text-primary-950 scroll-mt-section"
+        id="visitor-information"
+      >
+        Visitor Information
+      </h1>
+      <div class="grid md:grid-cols-2 gap-4 grid-flow-dense">
+        {
+          visitorInformation.map(({ title, icon, content }) => (
+            <InfoCard icon={icon} title={title} content={content} />
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Shell>

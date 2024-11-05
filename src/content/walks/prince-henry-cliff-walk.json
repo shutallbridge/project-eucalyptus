@@ -1,0 +1,99 @@
+{
+  "title": "Prince Henry Cliff Walk",
+  "cardDescription": "Experience breathtaking views, iconic lookouts, and natural beauty on the Prince Henry Cliff Walk, a scenic track along the Blue Mountains cliffs with over 20 lookouts.",
+  "tags": ["long-walk"],
+  "area": "Katoomba Area",
+  "image": "/images/prince-henry-cliff-walk.jpg",
+  "imageAlt": "Expansive view of forested valleys and distant mountains under a blue sky along the Prince Henry Cliff Walk",
+  "difficulty": "Moderate",
+  "duration": "3.5 Hours",
+  "distance": "7km one-way",
+  "isAccessible": false,
+  "hasAlerts": false,
+  "overview": "The Prince Henry Cliff Walk is a scenic hiking trail stretching between Katoomba and Leura, offering some of the best views in the Blue Mountains National Park. Perfect for nature lovers and photographers alike, this walk winds along cliff edges with over 20 lookouts, including the famous Echo Point for a view of the Three Sisters. With lush forests, unique hanging swamps, and vibrant wildflowers in the warmer months, the walk caters to both casual walkers and seasoned hikers, allowing you to explore sections or complete the full route.",
+  "timeline": [
+    { "title": "Echo Point Lookout", "time": "0:00" },
+    { "title": "Spooners Lookout", "time": "0:10" },
+    { "title": "Three Sisters", "time": "0:20" },
+    { "title": "Tallawalla Lookout", "time": "1:00" },
+    { "title": "Kiah Lookout", "time": "2:15" },
+    { "title": "Elysian Rock Lookout", "time": "2:45" },
+    { "title": "Gordon Falls Picnic Area", "time": "3:30" }
+  ],
+  "mapUrl": "https://www.google.com/maps/d/u/0/embed?mid=1fy6GWtESrd6ftZt7LhZAszOACAlMpJQ&ehbc=2E312F",
+  "visitorInfo": [
+    {
+      "title": "Getting there",
+      "icon": "material-symbols:directions-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "Prince Henry Cliff Walk starts from Echo Point, accessible from Cliff Drive in Katoomba. You can get there by either driving or taking public transport:"
+        },
+        {
+          "type": "list",
+          "content": [
+            "By car - Take Great Western Highway to Katoomba, and follow the signs to Three Sisters and Echo Point you approach Katoomba",
+            "By public transport - Take the 960K or the 686 bus from Katoomba city center to Echo Point"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Difficulty",
+      "icon": "material-symbols:hiking-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is rated as moderate (Grade 3 in the Australian Walking Track Grading System). Moderate trails up to 20km, some rough areas and short, steep sections. Basic bushwalking experience helpful."
+        }
+      ]
+    },
+    {
+      "title": "Facilities",
+      "icon": "material-symbols:family-restroom-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "There are not rubbish bins in the area, please take all your rubbish with you.",
+            "Toilets, picnic facilities and water are available at Echo Point, Katoomba Cascades and Gordon Falls"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Accessibility",
+      "icon": "material-symbols:accessible-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is not wheelchair-friendly. Assistance is needed due to steps and uneven terrain."
+        }
+      ]
+    },
+    {
+      "title": "Alerts",
+      "icon": "material-symbols:warning-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "There are currently no alerts for this walk. Keep an eye on the Blue Haze social channels for updates."
+        }
+      ]
+    },
+    {
+      "title": "Park rules",
+      "icon": "material-symbols:report-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "Pets (not including registered assistance animals) are not permitted on this walk.",
+            "Smoking is not permitted on this walk or any other walk in the Blue Mountains National Park."
+          ]
+        }
+      ]
+    }
+  ]
+}

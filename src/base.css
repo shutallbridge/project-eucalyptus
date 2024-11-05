@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Bold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-BoldItalic.ttf") format("truetype");
+    font-weight: 600;
+    font-style: italic;
+  }
+}
+
+@layer components {
+  .content {
+    /* https://tailwindcss.com/docs/functions-and-directives#apply */
+    @apply w-full px-4 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto;
+  }
+
+  :root {
+    --navigation-height: 80px;
+  }
+
+  .scroll-mt-section {
+    @apply scroll-mt-[calc(var(--navigation-height)+theme(spacing.6))];
+  }
+
+  /* these styles are used to occupy the white space when on the desktop layout with 4 cards */
+  /* the :has() selector looks for the grid container that has exactly 4 cards */
+  /* :nth-of-type() is used as there are <template/> tags in the grid container from Alpine.js */
+  /* when there are exactly 4 visible cards, create a 3-column grid */
+  .four-cards-layout:has(> a:nth-of-type(4):last-of-type) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* similar to the selector above, but for the first card that is the direct child of the grid container */
+  /* make the first visible card span 2 columns */
+  .four-cards-layout:has(> a:nth-of-type(4):last-of-type) > a:nth-of-type(1) {
+    grid-column: span 2;
+  }
+
+  /* similar to the selector above, but for the last card */
+  /* make the last visible card span 2 columns */
+  .four-cards-layout:has(> a:nth-of-type(4):last-of-type) > a:nth-of-type(4) {
+    grid-column: span 2;
+  }
+
+  /* this animation is used to make the "scroll down" CTA bounce */
+  .updown {
+    animation: updown 2s infinite ease-in-out;
+  }
+
+  @keyframes updown {
+    0%,
+    100% {
+      transform: translateY(-15%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer utilities {
+  /* https://alpinejs.dev/directives/cloak */
+  [x-cloak] {
+    display: none !important;
+  }
+}

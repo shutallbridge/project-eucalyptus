@@ -1,0 +1,265 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import "@/base.css";
+
+export type Props = {
+  title: string;
+};
+
+type NavigationItem = {
+  id: string;
+  label: string;
+  href: string;
+};
+
+type SocialLink = {
+  href: string;
+  icon: string;
+};
+
+type CreditLink = {
+  href: string;
+  label: string;
+};
+
+type SiteLink = {
+  href: string;
+  label: string;
+};
+
+const navigationItems: NavigationItem[] = [
+  { id: "walks", label: "Walks", href: "/#popular-bushwalks" },
+  {
+    id: "visitor-information",
+    label: "Visitor Information",
+    href: "/#visitor-information",
+  },
+  { id: "about", label: "About", href: "/#about" },
+];
+
+const socialLinks: SocialLink[] = [
+  {
+    href: "https://www.instagram.com/nswnationalparks/",
+    icon: "fa6-brands:instagram",
+  },
+  {
+    href: "https://x.com/NewSouthWales",
+    icon: "fa6-brands:square-x-twitter",
+  },
+  {
+    href: "https://www.tiktok.com/@visitnsw",
+    icon: "fa6-brands:tiktok",
+  },
+  {
+    href: "https://www.facebook.com/NSWNationalParks/",
+    icon: "fa6-brands:square-facebook",
+  },
+];
+
+const creditLinks: CreditLink[] = [
+  {
+    href: "https://unsplash.com/photos/green-and-brown-mountains-under-white-clouds-during-daytime-Y04q5UQrRQM",
+    label: "Photography of the Blue Mountains cover image by Joeyy Lee",
+  },
+  {
+    href: "https://unsplash.com/photos/waterfalls-q8Jb1md-8k8",
+    label: "Photography of the Wentworth Walking Track by Hamish",
+  },
+  {
+    href: "https://unsplash.com/photos/a-rocky-cliff-with-trees-and-a-valley-below-with-three-sisters-in-the-background-XdKg2oJJDvc",
+    label: "Photography of the Three Sisters Walk by Calvin Kurlekar",
+  },
+  {
+    href: "https://unsplash.com/photos/aerial-photography-of-green-leafed-trees-during-daytime-Bll3xtSV_HY",
+    label: "Photography of the Prince Henry Cliff Walk by Annika",
+  },
+  {
+    href: "https://unsplash.com/photos/waterfalls-in-the-middle-of-the-forest-during-daytime-sMTJQVb3_Z0",
+    label: "Photography of the Grand Canyon Track by Gilly Tanabose",
+  },
+];
+
+const walks = await getCollection("walks");
+
+const walkLinks: SiteLink[] = walks.map((walk) => ({
+  href: `/walks/${walk.id}`,
+  label: walk.data.title,
+}));
+
+const homeLink: SiteLink = {
+  href: "/",
+  label: "The Blue Haze Home",
+};
+
+const siteLinks: SiteLink[] = [homeLink, ...walkLinks];
+
+const { title } = Astro.props as Props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans text-base text-gray-950 font-normal">
+    <nav
+      x-data="{ isOpen: false, currentHover: null }"
+      class="fixed top-0 left-0 w-full py-4 transition"
+      x-bind:class="$store.navigation.isTransparent ? 'bg-transparent' : 'bg-white border-b border-gray-200'"
+    >
+      <div class="content mx-auto px-4 flex justify-between items-center">
+        <!-- logo -->
+        <a href="/" class="text-xl font-bold text-primary-950">The Blue Haze</a>
+
+        <!-- desktop navigation -->
+        <ul
+          class="hidden sm:flex gap-x-7 px-4 py-3 rounded-md bg-white/40 backdrop-blur-lg backdrop-saturate-150"
+        >
+          {
+            navigationItems.map(({ id, label, href }) => (
+              <li>
+                <a
+                  x-on:mouseenter={`currentHover = '${id}'`}
+                  x-on:mouseleave="currentHover = null"
+                  class="font-medium transition-colors"
+                  x-bind:class={`currentHover === '${id}' ? 'text-gray-800' : currentHover !== null ? 'text-gray-400' : 'text-gray-800'`}
+                  href={href}
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- mobile navigation trigger -->
+        <button
+          x-on:click="isOpen = true"
+          class="static sm:hidden bg-white/40 hover:bg-white/60 backdrop-blur-lg backdrop-saturate-150 rounded-md p-3"
+        >
+          <Icon
+            class="text-gray-700"
+            name="heroicons:bars-2-20-solid"
+            size="20"
+          />
+        </button>
+
+        <!-- mobile navigation overlay -->
+        <div
+          x-show="isOpen"
+          x-cloak
+          x-transition.opacity.duration.200ms
+          class="fixed inset-0 bg-white/40 backdrop-blur-lg backdrop-saturate-150 px-6 pt-8 space-y-4"
+          role="dialog"
+          aria-modal="true"
+        >
+          <button x-on:click="isOpen = false">
+            <Icon
+              class="text-gray-700"
+              name="heroicons:x-mark-20-solid"
+              size="20"
+            />
+          </button>
+          <ul class="divide-y divide-gray-400">
+            {
+              navigationItems.map(({ label, href }) => (
+                <li class="py-2">
+                  <a
+                    x-on:click="isOpen = false"
+                    class="text-gray-700 font-medium"
+                    href={href}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- main content children -->
+    <slot />
+
+    <!-- footer -->
+    <footer class="bg-primary-950">
+      <div class="content py-16">
+        <div
+          class="pb-12 flex flex-col gap-y-12 lg:flex-row-reverse lg:justify-between"
+        >
+          <div class="flex flex-col gap-y-6 lg:flex-row gap-x-6">
+            <div class="space-y-5">
+              <h3 class="text-white font-bold">Site</h3>
+              <ul class="space-y-3">
+                {
+                  siteLinks.map(({ href, label }) => (
+                    <li>
+                      <a class="text-white hover:underline" href={href}>
+                        {label}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="space-y-5">
+              <h3 class="text-white font-bold">Special Thanks</h3>
+              <ul class="space-y-3">
+                {
+                  creditLinks.map(({ href, label }) => (
+                    <li>
+                      <a
+                        class="text-white hover:underline"
+                        href={href}
+                        target="_blank"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+          <div class="space-y-5">
+            <h3
+              class="text-white font-bold text-xl scroll-mt-section"
+              id="about"
+            >
+              The Blue Haze
+            </h3>
+            <div class="flex gap-x-4">
+              {
+                socialLinks.map(({ href, icon }) => (
+                  <a href={href} target="_blank">
+                    <Icon class="text-white" name={icon} size="24" />
+                  </a>
+                ))
+              }
+            </div>
+            <p class="text-white">
+              Website by <a
+                class="hover:underline"
+                href="https://shu-takahashi.com/"
+                target="_blank">Shu Takahashi</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-white">
+          <p class="text-white max-w-[82ch] mx-auto text-center">
+            The Blue Haze acknowledge the Traditional Custodians of the lands
+            where we work and live. We celebrate the diversity of Aboriginal
+            peoples and their ongoing cultures and connections to the lands and
+            waters of NSW.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

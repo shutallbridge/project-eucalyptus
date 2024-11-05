@@ -1,0 +1,95 @@
+{
+  "title": "Grand Canyon Track",
+  "cardDescription": "Explore sandstone cliffs, lush ferns, and waterfalls on this adventurous 6km loop through Blackheath’s Grand Canyon in the Blue Mountains.",
+  "tags": ["family-friendly", "long-walk"],
+  "area": "Blackheath Area",
+  "image": "/images/grand-canyon-track.jpg",
+  "imageAlt": "Waterfall cascading over rocky ledges surrounded by dense forest along the Grand Canyon Track in Blackheath",
+  "difficulty": "Moderate",
+  "duration": "3.5 hours",
+  "distance": "6.3km loop",
+  "isAccessible": false,
+  "hasAlerts": false,
+  "overview": "The Grand Canyon Track is a stunning 6km loop in the Blue Mountains, perfect for adventurous hikers looking to immerse themselves in a world of sandstone walls, cool-temperate rainforests, and cascading waterfalls. First established in 1907, this historic trail weaves through lush native vegetation. Though rated as a 'hard' walk due to a steep ascent at the end, it’s accessible without specialist equipment, making it great for well-prepared beginners and seasoned hikers alike.",
+  "timeline": [
+    { "title": "Grand Canyon Carpark", "time": "0:00" },
+    { "title": "Grand Canyon", "time": "1:40" },
+    { "title": "Nates Glen Parking Area", "time": "3:30" }
+  ],
+  "mapUrl": "https://www.google.com/maps/d/u/0/embed?mid=1Vper0P0kzygfKiinpjo8uId0sGh2IIk&ehbc=2E312F",
+  "visitorInfo": [
+    {
+      "title": "Getting there",
+      "icon": "material-symbols:directions-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "Grand Canyon Track starts from the Grand Canyon carpark. You can get there by driving. Public transport is not available."
+        },
+        {
+          "type": "list",
+          "content": [
+            "Exit from the Great Western Highway at Evans Lookout Road",
+            "Follow the signs to the Grand Canyon carpark"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Difficulty",
+      "icon": "material-symbols:hiking-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is rated as moderate (Grade 3 in the Australian Walking Track Grading System). Moderate trails up to 20km, some rough areas and short, steep sections. Basic bushwalking experience helpful."
+        }
+      ]
+    },
+    {
+      "title": "Facilities",
+      "icon": "material-symbols:family-restroom-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "There are not rubbish bins in the area, please take all your rubbish with you.",
+            "Accessible toilets are available at the Grand Canyon carpark"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Accessibility",
+      "icon": "material-symbols:accessible-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is not wheelchair-friendly. Assistance is needed due to steps and uneven terrain."
+        }
+      ]
+    },
+    {
+      "title": "Alerts",
+      "icon": "material-symbols:warning-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "There are currently no alerts for this walk. Keep an eye on the Blue Haze social channels for updates."
+        }
+      ]
+    },
+    {
+      "title": "Park rules",
+      "icon": "material-symbols:report-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "Pets (not including registered assistance animals) are not permitted on this walk.",
+            "Smoking is not permitted on this walk or any other walk in the Blue Mountains National Park."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+---
+import { z } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { content as contentSchema } from "@/utils/content";
+
+export type Props = {
+  icon: string;
+  title: string;
+  content: z.infer<typeof contentSchema>;
+};
+
+const { icon, title, content } = Astro.props;
+---
+
+<section class="space-y-4 bg-gray-50 p-6 rounded-md">
+  <span class="p-2 inline-block rounded-md bg-gray-200">
+    <Icon class="text-gray-900" name={icon} size="24" />
+  </span>
+  <div class="space-y-2">
+    <h2 class="font-bold">{title}</h2>
+    {
+      content.map(({ type, content }) =>
+        type === "paragraph" ? (
+          <p>{content}</p>
+        ) : (
+          <ul class="list-disc space-y-1 pl-5">
+            {content.map((item) => (
+              <li class="pl-2">{item}</li>
+            ))}
+          </ul>
+        )
+      )
+    }
+  </div>
+</section>

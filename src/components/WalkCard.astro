@@ -1,0 +1,60 @@
+---
+import MetaChip from "./MetaChip.astro";
+
+export type Props = {
+  "x-alpine"?: boolean;
+  href: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  duration: string;
+  difficulty: string;
+};
+
+const {
+  "x-alpine": xAlpine,
+  href,
+  title,
+  description,
+  image,
+  imageAlt,
+  duration,
+  difficulty,
+} = Astro.props;
+---
+
+<a
+  {...xAlpine ? { "x-bind:href": href } : { href }}
+  class="flex flex-col rounded-md bg-white hover:shadow-sm transition-shadow overflow-hidden border border-gray-200"
+>
+  <img
+    class="w-full h-64 rounded-md object-cover bg-gray-50 overflow-hidden"
+    {...xAlpine ? { "x-bind:src": image } : { src: image }}
+    {...xAlpine ? { "x-bind:alt": imageAlt } : { alt: imageAlt }}
+    width={4000}
+    height={3000}
+  />
+  <div class="flex-1 flex gap-y-3 flex-col justify-between px-4 py-4">
+    <div class="space-y-4">
+      <h2 class="text-xl font-medium text-primary-950" x-text={title}>
+        {xAlpine ? undefined : title}
+      </h2>
+      <p class="text-gray-950" x-text={description}>
+        {xAlpine ? undefined : description}
+      </p>
+    </div>
+    <div class="flex gap-4">
+      <MetaChip
+        x-alpine={xAlpine}
+        iconName="heroicons:chart-bar-20-solid"
+        label={difficulty}
+      />
+      <MetaChip
+        x-alpine={xAlpine}
+        iconName="heroicons:clock-20-solid"
+        label={duration}
+      />
+    </div>
+  </div>
+</a>

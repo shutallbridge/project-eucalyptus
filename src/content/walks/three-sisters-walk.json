@@ -1,0 +1,97 @@
+{
+  "title": "Three Sisters Walk",
+  "cardDescription": "Explore the iconic Three Sisters and surrounding lush rainforests on this scenic and accessible walk, perfect for families and adventure-seekers alike.",
+  "tags": ["accessible", "family-friendly"],
+  "area": "Katoomba Area",
+  "image": "/images/three-sisters-walk.jpg",
+  "imageAlt": "View of the Three Sisters rock formation against a backdrop of forested valleys and distant cliffs along the Three Sisters Walk",
+  "difficulty": "Easy",
+  "duration": "40 minutes",
+  "distance": "0.8km return",
+  "isAccessible": true,
+  "hasAlerts": false,
+  "overview": "This family-friendly walk in Katoomba offers breathtaking views of the Three Sisters and the Jamison Valley. Starting at Echo Point, the trail winds through eucalypt forests, with chances to spot local wildlife like lyrebirds and rosellas. Enjoy easy paths to lookouts like Oreades and Lady Game for stunning vistas, or challenge yourself with the famous Giant Stairway and Honeymoon Bridge connecting to the first sister. Ideal for beginners and families, there are also options for more experienced hikers to extend the journey on nearby trails like the Prince Henry Cliff Walk and Federal Pass.",
+  "timeline": [
+    { "title": "Echo Point Lookout", "time": "0:00" },
+    { "title": "Spooners Lookout", "time": "0:10" },
+    { "title": "Three Sisters", "time": "0:20" }
+  ],
+  "mapUrl": "https://www.google.com/maps/d/u/0/embed?mid=1czkh-RZDvTXL702h1E0COcfaPmzuQMs&ehbc=2E312F",
+  "visitorInfo": [
+    {
+      "title": "Getting there",
+      "icon": "material-symbols:directions-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "Three Sisters walk starts from Echo Point, accessible from Cliff Drive in Katoomba. You can get there by either driving or taking public transport:"
+        },
+        {
+          "type": "list",
+          "content": [
+            "By car - Take Great Western Highway to Katoomba, and follow the signs to Three Sisters and Echo Point you approach Katoomba",
+            "By public transport - Take the 960K or the 686 bus from Katoomba city center to Echo Point"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Difficulty",
+      "icon": "material-symbols:hiking-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is rated as easy (Grade 1 in the Australian Walking Track Grading System). Easy, flat trails under 5km with no steps or steep sections. Suitable for wheelchairs with assistance."
+        }
+      ]
+    },
+    {
+      "title": "Facilities",
+      "icon": "material-symbols:family-restroom-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "There are not rubbish bins in the area, please take all your rubbish with you.",
+            "Accessible toilets are available at Echo Point",
+            "Picnic facilities are available at Echo Point",
+            "Two resting points available. One in the middle of the walk and another at the end."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Accessibility",
+      "icon": "material-symbols:accessible-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "The concrete path from Echo Point to Oreades Lookout is wheelchair-friendly, with a few slopes, benches, accessible toilets, and parking. Beyond Oreades, assistance is needed due to steps and steep, narrow stairs leading to Honeymoon Bridge."
+        }
+      ]
+    },
+    {
+      "title": "Alerts",
+      "icon": "material-symbols:warning-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "There are currently no alerts for this walk. Keep an eye on the Blue Haze social channels for updates."
+        }
+      ]
+    },
+    {
+      "title": "Park rules",
+      "icon": "material-symbols:report-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "Pets (not including registered assistance animals) are not permitted on this walk.",
+            "Smoking is not permitted on this walk or any other walk in the Blue Mountains National Park."
+          ]
+        }
+      ]
+    }
+  ]
+}

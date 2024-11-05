@@ -1,0 +1,97 @@
+{
+  "title": "Wentworth Falls Track",
+  "cardDescription": "Discover the stunning beauty of Wentworth Falls and the National Pass trail, where breathtaking lookouts and iconic waterfalls await in the heart of the Blue Mountains.",
+  "tags": ["family-friendly"],
+  "area": "Katoomba Area",
+  "image": "/images/wentworth-falls-track.jpg",
+  "imageAlt": "Tall waterfall cascading down a rocky cliff surrounded by greenery along the Wentworth Falls Track",
+  "difficulty": "Moderate",
+  "duration": "1 hour",
+  "distance": "1.4km return",
+  "isAccessible": false,
+  "hasAlerts": false,
+  "overview": "This walk from Wentworth Falls picnic area to the iconic National Pass trail offers unforgettable views and natural beauty perfect for adventurous hikers. Begin by exploring lookouts over Jamison Valley and the dramatic Wentworth Falls, before descending steps to cliff-edge viewpoints and lush fern-filled grottos. With cascading waterfalls, cool water holes, and panoramic valley vistas, this trail is ideal for those seeking a challenging but well-maintained path.",
+  "timeline": [
+    { "title": "Wentworth Falls Picnic Area", "time": "0:00" },
+    { "title": "Wentworth Falls Trarcks Lookout", "time": "0:10" },
+    { "title": "Fletchers Lookout", "time": "0:20" },
+    { "title": "Grand Stairway", "time": "0:30" }
+  ],
+  "mapUrl": "https://www.google.com/maps/d/u/0/embed?mid=1Ms6Z0KZTWGM9uogBkFiZRdPLh-Y3F5U&ehbc=2E312F",
+  "visitorInfo": [
+    {
+      "title": "Getting there",
+      "icon": "material-symbols:directions-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "Wentworth Falls Track starts from Wentworth Falls picnic area. You can get there by either driving or taking public transport:"
+        },
+        {
+          "type": "list",
+          "content": [
+            "By car - Take Great Western Highway to Wentworth Falls, exit at Falls Road and follow the signs to Wentworth Falls picnic area",
+            "By public transport - Take the 685 bus from Wentworth Falls station to Wentworth Falls picnic area"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Difficulty",
+      "icon": "material-symbols:hiking-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is rated as moderate (Grade 3 in the Australian Walking Track Grading System). Moderate trails up to 20km, some rough areas and short, steep sections. Basic bushwalking experience helpful."
+        }
+      ]
+    },
+    {
+      "title": "Facilities",
+      "icon": "material-symbols:family-restroom-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "There are not rubbish bins in the area, please take all your rubbish with you.",
+            "Wentworth Falls picnic area has toilets, picnic facilities and water.",
+            "The Conservation Hut cafe is also located in the picnic area."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Accessibility",
+      "icon": "material-symbols:accessible-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This walk is not wheelchair-friendly. Assistance is needed due to steps and uneven terrain."
+        }
+      ]
+    },
+    {
+      "title": "Alerts",
+      "icon": "material-symbols:warning-rounded",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "There are currently no alerts for this walk. Keep an eye on the Blue Haze social channels for updates."
+        }
+      ]
+    },
+    {
+      "title": "Park rules",
+      "icon": "material-symbols:report-rounded",
+      "content": [
+        {
+          "type": "list",
+          "content": [
+            "Pets (not including registered assistance animals) are not permitted on this walk.",
+            "Smoking is not permitted on this walk or any other walk in the Blue Mountains National Park."
+          ]
+        }
+      ]
+    }
+  ]
+}

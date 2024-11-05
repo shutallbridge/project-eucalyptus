@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+
+export type Props = {
+  "x-alpine"?: boolean;
+  iconName: string;
+  label: string;
+};
+
+const { "x-alpine": xAlpine, iconName, label } = Astro.props as Props;
+---
+
+<div class="flex items-center gap-x-2">
+  <Icon class="text-gray-600" name={iconName} size="20" />
+  <span class="text-gray-700 font-medium" x-text={label}>
+    {xAlpine ? undefined : label}
+  </span>
+</div>

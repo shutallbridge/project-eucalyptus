@@ -1,0 +1,123 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Shell from "@/components/Shell.astro";
+import MetaChip from "@/components/MetaChip.astro";
+import InfoCard from "@/components/InfoCard.astro";
+import WalkCard from "@/components/WalkCard.astro";
+
+export async function getStaticPaths() {
+  const walks = await getCollection("walks");
+  return walks.map((walk) => ({
+    params: { slug: walk.id },
+    props: { walk },
+  }));
+}
+
+const walks = await getCollection("walks");
+const { slug: walkId } = Astro.params;
+const similarWalks = walks.filter((walk) => walk.id !== walkId);
+
+const { walk } = Astro.props;
+---
+
+<Shell title={walk.data.title}>
+  <header
+    class="pt-[calc(var(--navigation-height)+theme(spacing.6))] content block space-y-4 lg:space-y-0 lg:flex lg:gap-x-6 xl:gap-x-12 items-center"
+  >
+    <Image
+      class="lg:flex-1 xl:flex-[4] w-full h-[640px] object-cover rounded-lg bg-gray-50"
+      src={walk.data.image}
+      width={4000}
+      height={3000}
+      alt={walk.data.imageAlt}
+    />
+    <div class="lg:flex-1 xl:flex-[3] flex flex-col gap-y-5">
+      <h2 class="text-primary-950 font-bold">{walk.data.area}</h2>
+      <h1 class="text-3xl font-medium text-primary-950">{walk.data.title}</h1>
+      <div class="flex gap-4 flex-wrap">
+        <MetaChip
+          iconName="heroicons:chart-bar-20-solid"
+          label={walk.data.difficulty}
+        />
+        <MetaChip
+          iconName="heroicons:clock-20-solid"
+          label={walk.data.duration}
+        />
+        <MetaChip
+          iconName="material-symbols:accessible"
+          label={walk.data.isAccessible ? "Accessible" : "Not Accessible"}
+        />
+        <MetaChip
+          iconName="heroicons:exclamation-circle-20-solid"
+          label={walk.data.hasAlerts ? "Ongoing Alerts" : "No Alerts"}
+        />
+        <MetaChip
+          iconName="heroicons:map-pin-20-solid"
+          label={walk.data.distance}
+        />
+      </div>
+    </div>
+  </header>
+  <main class="space-y-24 py-24">
+    <!-- overview section -->
+    <section class="content space-y-6">
+      <h1 class="text-3xl text-primary-950">Overview</h1>
+      <p class="max-w-[82ch]">{walk.data.overview}</p>
+    </section>
+
+    <!-- timeline and map section -->
+    <section class="content space-y-6">
+      <h1 class="text-3xl text-primary-950">The Walk</h1>
+      <div class="md:flex">
+        <!-- timeline -->
+        <div class="md:flex-1 md:h-[424px] overflow-y-auto">
+          {
+            walk.data.timeline.map((step) => (
+              <div class="flex justify-between border-t border-gray-200 px-4 py-6">
+                <span class="font-bold">{step.title}</span>
+                <span>{step.time}</span>
+              </div>
+            ))
+          }
+        </div>
+        <!-- map embed -->
+        <iframe
+          class="w-full md:flex-1 h-[424px] bg-gray-50"
+          src={walk.data.mapUrl}></iframe>
+      </div>
+    </section>
+
+    <!-- visitor information section -->
+    <section class="content space-y-6">
+      <h1 class="text-3xl text-primary-950">Visitor Information</h1>
+      <div class="grid md:grid-cols-2 gap-4 grid-flow-dense">
+        {
+          walk.data.visitorInfo.map(({ title, icon, content }) => (
+            <InfoCard icon={icon} title={title} content={content} />
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- similar walks section -->
+    <section class="content space-y-6">
+      <h1 class="text-3xl text-primary-950">Similar Walks</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+          similarWalks.map((walk) => (
+            <WalkCard
+              href={`/${walk.collection}/${walk.id}`}
+              title={walk.data.title}
+              description={walk.data.cardDescription}
+              image={walk.data.image}
+              imageAlt={walk.data.imageAlt}
+              duration={walk.data.duration}
+              difficulty={walk.data.difficulty}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Shell>
